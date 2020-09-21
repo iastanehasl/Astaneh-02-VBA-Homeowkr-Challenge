@@ -1,2 +1,3 @@
-# Astaneh-02-VBA-Homeowkr-Challenge
-Astaneh-02-VBA-Homework-Challenge
+In this activity, the analyst is asked to analyze available stock data through VBA script. While additional test information is made available (but not critical to the assignment), the analyst will work with the stock data to: 1) return the ticker symbol over a cumulative year, calculate the yearly change of stocks, calculate the percent change of stocks, and the total volume of the stock within the give year. Within the bonus activity, the analyst was asked to return the greatest % increase, greatest % decrease, and greatest total volume. With multiple sheets of data, the analyst was also asked to apply code that would span across multiple sheets.  
+
+Technicial skills used: VBA
