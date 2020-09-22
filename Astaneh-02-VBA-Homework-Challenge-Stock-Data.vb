@@ -50,10 +50,8 @@ Dim summary_row As Double
 Dim openPrice As Double
 Dim closePrice As Double
 Dim yearlyChange As Double
-Dim greatestIncrease As Double
-Dim greatestDecrease As Double
-Dim greatestVolume As Double
 Dim percentChange As Double
+Dim lastRow As Long
 
 rowCounter = Cells(Rows.Count, "A").End(xlUp).Row
 summary_row = 2
@@ -107,16 +105,28 @@ End If
 Next currentRow
 
 ' Challenges
+
+endRow = Cells(Rows.Count, 9).End(xlUp).Row
  
-greatestIncrease = Application.WorksheetFunction.Max(Range("K2:K800000"))
-    Cells(2, 16).Value = greatestIncrease
+For currentRow = 2 To endRow
+
+If Cells(currentRow, 11) = Application.WorksheetFunction.Max(Range("K2:K" & endRow)) Then
+    Cells(2, 15).Value = Cells(currentRow, 9).Value
+    Cells(2, 16).Value = Cells(currentRow, 11).Value
     Cells(2, 16).NumberFormat = "0.0%"
 
-greatestDecrease = Application.WorksheetFunction.Min(Range("K2:K800000"))
-    Cells(3, 16).Value = greatestDecrease
+ElseIf Cells(currentRow, 11) = Application.WorksheetFunction.Min(Range("K2:K" & endRow)) Then
+    Cells(3, 15).Value = Cells(currentRow, 9).Value
+    Cells(3, 16).Value = Cells(currentRow, 11).Value
     Cells(3, 16).NumberFormat = "0.0%"
 
-greatestVolume = Application.WorksheetFunction.Max(Range("L2:L800000"))
-    Cells(4, 16).Value = greatestVolume
+ElseIf Cells(currentRow, 12) = Application.WorksheetFunction.Max(Range("L2:L" & endRow)) Then
+    Cells(4, 15).Value = Cells(currentRow, 9).Value
+    Cells(4, 16).Value = Cells(currentRow, 12).Value
+    Cells(3, 16).NumberFormat = "0"
+
+End If
+
+Next currentRow
 
 End Sub
